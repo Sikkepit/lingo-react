@@ -1,10 +1,12 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, type RefObject } from "react";
+import type { WinModalRefType } from "../components/WinModal";
 
 type LingoContextValue = {
 	winningWord: string;
 	guessCount: number;
 	guessedWords: string[];
 	isGameOver: boolean;
+	winModalRef: RefObject<WinModalRefType | null>;
 
 	score: number;
 	setScore: React.Dispatch<React.SetStateAction<number>>;
