@@ -1,13 +1,12 @@
 import { getGuessedLetters, getWinningWord } from "./util/gameUtils";
 import { convertLetterIj } from "./util/stringUtils";
 import { useState } from "react";
-import { useKeyDown } from "./hooks/useKeyDown";
 
 import TextInput from "./components/TextInput";
 import Word from "./components/Word";
 import ConfirmButton from "./components/ConfirmButton";
 
-function App() {
+export default function App() {
 	const [winningWord, setWinningWord] = useState(getWinningWord);
 	const [score, setScore] = useState(0);
 
@@ -66,8 +65,6 @@ function App() {
 		setGuessCount((oldValue) => oldValue + 1);
 	};
 
-	useKeyDown(handleGuess, "Enter");
-
 	return (
 		<div className="main">
 			<span>Score: {score}</span>
@@ -88,6 +85,9 @@ function App() {
 					value={currentGuess}
 					disabled={isGameOver}
 					onChange={(value) => setCurrentGuess(value)}
+					onKeyDown={(e) => {
+						if (e.key === "Enter") handleGuess();
+					}}
 				/>
 
 				<ConfirmButton onClick={handleGuess} disabled={isGameOver} />
@@ -97,5 +97,3 @@ function App() {
 		</div>
 	);
 }
-
-export default App;

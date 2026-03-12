@@ -31,3 +31,31 @@ export const getGuessedLetters = (guessedWord: string, guessedLetters: string, w
 
 	return newGuessedLetters.join("");
 };
+
+/**
+ * Helper function for checking if a letter has to be marked yellow inside
+ * a guessed word. A letter is marked yellow if it in the word but not in the
+ * correct place. The function takes in account previously marked letters
+ */
+export const getShouldMarkYellow = (winningWord: string, guessedWord: string, letterValue: string, index: number) => {
+	const indexesOfLetter: number[] = [];
+
+	[...winningWord].forEach((letter, i) => {
+		const isInRightPosition = winningWord.charAt(i) === guessedWord.charAt(i);
+		const isSameLetter = letter === letterValue;
+
+		if (isSameLetter && !isInRightPosition) indexesOfLetter.push(i);
+	});
+
+	[...guessedWord].forEach((letter, i) => {
+		// If the letter has already been marked yellow inside guessedWord
+		// we pop an entry from the indexesOfLetter array
+		const isInRightPosition = winningWord.charAt(i) === guessedWord.charAt(i);
+		const isSameLetter = letter === letterValue;
+
+		if (isSameLetter && !isInRightPosition && i < index) indexesOfLetter.pop();
+	});
+
+	// Mark yellow if there is an unmarked instance of the letter
+	return indexesOfLetter.length > 0;
+};
