@@ -44,6 +44,7 @@
 			background: var(--c-red);
 			scale: 0.94;
 		}
+
 		&:nth-child(5) {
 			transform: translate(-55px, -3px);
 			z-index: 1;
