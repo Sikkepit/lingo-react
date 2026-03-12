@@ -1,23 +1,19 @@
-export default function Letter({
-	guessedWord,
-	winningWord,
-	index,
-}: {
+import { bringBackLetterIj } from "../util/stringUtils";
+
+type LetterProps = {
 	guessedWord: string;
 	winningWord: string;
 	index: number;
-}) {
+};
+
+export default function Letter({ guessedWord, winningWord, index }: LetterProps) {
 	const letterValue = guessedWord.charAt(index);
 
 	const getClass = () => {
-		if (letterValue === "") return "";
+		if (letterValue === "" || !winningWord.includes(letterValue)) return "";
 
 		if (letterValue === winningWord.charAt(index)) {
 			return "letter--red";
-		}
-
-		if (!winningWord.includes(letterValue)) {
-			return "";
 		}
 
 		const shouldMarkYellow = getShouldMarkYellow();
@@ -47,5 +43,5 @@ export default function Letter({
 		return indexesOfLetter.length > 0;
 	};
 
-	return <div className={`letter ${getClass()}`.trim()}>{letterValue.replace("9", "ij")}</div>;
+	return <div className={`letter ${getClass()}`.trim()}>{bringBackLetterIj(letterValue)}</div>;
 }

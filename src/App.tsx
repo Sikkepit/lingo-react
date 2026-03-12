@@ -1,6 +1,7 @@
 import { getGuessedLetters, getWinningWord } from "./util/gameUtils";
 import { convertLetterIj } from "./util/stringUtils";
 import { useState } from "react";
+import { useKeyDown } from "./hooks/useKeyDown";
 
 import TextInput from "./components/TextInput";
 import Word from "./components/Word";
@@ -64,6 +65,8 @@ function App() {
 		setGuessedeLetters(newGuessedLetters);
 		setGuessCount((oldValue) => oldValue + 1);
 	};
+
+	useKeyDown(handleGuess, "Enter");
 
 	return (
 		<div className="main">

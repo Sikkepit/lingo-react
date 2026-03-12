@@ -1,12 +1,10 @@
-export default function TextInput({
-	value,
-	disabled,
-	onChange,
-}: {
+type TextInputProps = {
 	value: string;
 	disabled: boolean;
 	onChange: (value: string) => void;
-}) {
+};
+
+export default function TextInput({ value, disabled, onChange }: TextInputProps) {
 	return (
 		<input
 			type="text"

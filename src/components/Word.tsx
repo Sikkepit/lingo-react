@@ -1,14 +1,12 @@
 import Letter from "./Letter";
 
-export default function Word({
-	guessedWord,
-	winningWord,
-	isCurrentGuess,
-}: {
+type WordProps = {
 	guessedWord: string;
 	winningWord: string;
 	isCurrentGuess: boolean;
-}) {
+};
+
+export default function Word({ guessedWord, winningWord, isCurrentGuess }: WordProps) {
 	return (
 		<div className={`word ${!isCurrentGuess ? "word--marked" : ""}`.trim()}>
 			{Array.from({ length: 5 }).map((_, index) => (
