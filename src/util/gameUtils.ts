@@ -34,7 +34,7 @@ export const getGuessedLetters = (guessedWord: string, guessedLetters: string, w
 
 /**
  * Helper function for checking if a letter has to be marked yellow inside
- * a guessed word. A letter is marked yellow if it in the word but not in the
+ * a guessed word. A letter is marked yellow if it's in the word but not in the
  * correct place. The function takes in account previously marked letters
  */
 export const getShouldMarkYellow = (winningWord: string, guessedWord: string, letterValue: string, index: number) => {
@@ -49,7 +49,7 @@ export const getShouldMarkYellow = (winningWord: string, guessedWord: string, le
 
 	[...guessedWord].forEach((letter, i) => {
 		// If the letter has already been marked yellow inside guessedWord
-		// we pop an entry from the indexesOfLetter array
+		// we don't want to mark ik twice. We pop an entry from the indexesOfLetter array
 		const isInRightPosition = winningWord.charAt(i) === guessedWord.charAt(i);
 		const isSameLetter = letter === letterValue;
 
