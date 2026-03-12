@@ -6,6 +6,7 @@ import TextInput from "./components/TextInput";
 import Word from "./components/Word";
 import ConfirmButton from "./components/ConfirmButton";
 import Logo from "./components/Logo";
+import GameOver from "./components/GameOver";
 
 export default function App() {
 	const [winningWord, setWinningWord] = useState(getWinningWord);
@@ -109,18 +110,12 @@ export default function App() {
 			)}
 
 			{isGameOver && (
-				<>
-					<span>Game Over!</span>
-					<button
-						type="button"
-						onClick={() => {
-							setScore(0);
-							initNewRound();
-						}}
-					>
-						Probeer opnieuw
-					</button>
-				</>
+				<GameOver
+					onRestart={() => {
+						setScore(0);
+						initNewRound();
+					}}
+				/>
 			)}
 		</div>
 	);

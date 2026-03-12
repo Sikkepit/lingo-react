@@ -1,0 +1,17 @@
+button {
+	cursor: pointer;
+}
+
+.button {
+	background-color: var(--c-green);
+	border-radius: 8px;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	box-shadow: var(--box-shadow);
+}

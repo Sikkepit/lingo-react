@@ -40,6 +40,13 @@ body {
 	box-shadow: var(--box-shadow);
 }
 
-button {
-	cursor: pointer;
+h1 {
+	font-size: 46px;
+}
+
+.stroked-text {
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	-webkit-text-stroke: 1px black;
 }
