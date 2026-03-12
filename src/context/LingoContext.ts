@@ -2,21 +2,18 @@ import { createContext, useContext } from "react";
 
 type LingoContextValue = {
 	winningWord: string;
+	guessCount: number;
+	guessedWords: string[];
+	isGameOver: boolean;
 
 	score: number;
 	setScore: React.Dispatch<React.SetStateAction<number>>;
 
-	guessCount: number;
-
 	currentGuess: string;
 	setCurrentGuess: React.Dispatch<React.SetStateAction<string>>;
 
-	guessedWords: string[];
-
 	isValid: boolean;
 	setIsValid: React.Dispatch<React.SetStateAction<boolean>>;
-
-	isGameOver: boolean;
 
 	initNewRound: () => void;
 	handleGuess: () => void;
