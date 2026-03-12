@@ -1,13 +1,15 @@
+import { useLingo } from "../context/LingoContext";
 import { getShouldMarkYellow } from "../util/gameUtils";
 import { bringBackLetterIj } from "../util/stringUtils";
 
 type LetterProps = {
 	guessedWord: string;
-	winningWord: string;
 	index: number;
 };
 
-export default function Letter({ guessedWord, winningWord, index }: LetterProps) {
+export default function Letter({ guessedWord, index }: LetterProps) {
+	const { winningWord } = useLingo();
+
 	const letterValue = guessedWord.charAt(index);
 
 	const getClass = () => {
