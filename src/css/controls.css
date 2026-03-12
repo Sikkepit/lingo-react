@@ -1,0 +1,51 @@
+.controls {
+	display: flex;
+	align-items: start;
+	gap: 0.5rem;
+
+	.input {
+		border-radius: 20px;
+		height: 45px;
+		width: 200px;
+		padding: 20px;
+		text-align: center;
+		text-transform: uppercase;
+		background: rgba(0, 0, 0, 0.2);
+		border-style: none;
+		color: white;
+		font-weight: bold;
+		box-shadow: var(--box-shadow);
+
+		&.input--error,
+		&.input--error:focus-visible {
+			outline: 2px dashed var(--c-red);
+		}
+
+		&:focus-visible {
+			outline: 2px dashed white;
+		}
+	}
+
+	.error {
+		color: white;
+		font-size: 0.75rem;
+		height: 15px;
+	}
+
+	.submit {
+		border-radius: 50%;
+		height: 45px;
+		width: 45px;
+		background-color: var(--c-green);
+		border: 1px solid black;
+		color: white;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		font-weight: bold;
+		letter-spacing: 1px;
+		box-shadow: var(--box-shadow);
+		cursor: pointer;
+	}
+}

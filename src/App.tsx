@@ -17,6 +17,8 @@ export default function App() {
 	const [guessedLetters, setGuessedeLetters] = useState(`${winningWord.charAt(0)}----`);
 	const [guessedWords, setGuessedWords] = useState([guessedLetters, "", "", "", ""]);
 
+	const [isValid, setIsValid] = useState(true);
+
 	const isGameOver = guessCount === 5;
 
 	const initNewRound = () => {
@@ -34,7 +36,10 @@ export default function App() {
 		if (isGameOver) return;
 
 		const guessedWord = convertLetterIj(currentGuess).toLowerCase();
-		if (guessedWord.length !== 5) return;
+		if (guessedWord.length !== 5) {
+			setIsValid(false);
+			return;
+		}
 
 		setCurrentGuess("");
 
@@ -85,14 +90,29 @@ export default function App() {
 					</div>
 
 					<div className="controls">
-						<TextInput
-							value={currentGuess}
-							disabled={isGameOver}
-							onChange={(value) => setCurrentGuess(value)}
-							onKeyDown={(e) => {
-								if (e.key === "Enter") handleGuess();
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								alignItems: "center",
+								gap: "0.5rem",
 							}}
-						/>
+						>
+							<TextInput
+								value={currentGuess}
+								disabled={isGameOver}
+								onChange={(value) => {
+									if (!isValid) setIsValid(true);
+									setCurrentGuess(value);
+								}}
+								isValid={isValid}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") handleGuess();
+								}}
+							/>
+
+							<span className="error">{!isValid && "Onjuiste invoer"}</span>
+						</div>
 
 						<ConfirmButton onClick={handleGuess} disabled={isGameOver} />
 					</div>

@@ -34,22 +34,10 @@ body {
 	gap: 1rem;
 }
 
-.score {
-	position: absolute;
-	inset-block-start: 1rem;
-	inset-inline-end: 2rem;
-}
-
 .wrapper {
 	display: flex;
 	flex-direction: column;
 	box-shadow: var(--box-shadow);
-}
-
-.controls {
-	display: flex;
-	align-items: center;
-	gap: 0.5rem;
 }
 
 button {

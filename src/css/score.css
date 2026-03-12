@@ -1,0 +1,5 @@
+.score {
+	position: absolute;
+	inset-block-start: 1rem;
+	inset-inline-end: 2rem;
+}
