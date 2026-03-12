@@ -12,6 +12,6 @@
 	box-shadow: var(--box-shadow);
 
 	&:focus-visible {
-		outline: 2px dashed var(--c-green);
+		outline: 2px dashed white;
 	}
 }
