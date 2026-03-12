@@ -90,29 +90,18 @@ export default function App() {
 					</div>
 
 					<div className="controls">
-						<div
-							style={{
-								display: "flex",
-								flexDirection: "column",
-								alignItems: "center",
-								gap: "0.5rem",
+						<TextInput
+							value={currentGuess}
+							disabled={isGameOver}
+							onChange={(value) => {
+								if (!isValid) setIsValid(true);
+								setCurrentGuess(value);
 							}}
-						>
-							<TextInput
-								value={currentGuess}
-								disabled={isGameOver}
-								onChange={(value) => {
-									if (!isValid) setIsValid(true);
-									setCurrentGuess(value);
-								}}
-								isValid={isValid}
-								onKeyDown={(e) => {
-									if (e.key === "Enter") handleGuess();
-								}}
-							/>
-
-							<span className="error">{!isValid && "Onjuiste invoer"}</span>
-						</div>
+							isValid={isValid}
+							onKeyDown={(e) => {
+								if (e.key === "Enter") handleGuess();
+							}}
+						/>
 
 						<ConfirmButton onClick={handleGuess} disabled={isGameOver} />
 					</div>
