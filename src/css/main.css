@@ -1,0 +1,57 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+:root {
+	--c-yellow: #e8d00a;
+	--c-red: #ab141a;
+	--c-green: #04aa6d;
+
+	--box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+	--gradient-word: linear-gradient(0deg, rgba(36, 112, 190, 1) 35%, rgba(77, 151, 212, 1) 100%);
+	--gradient-space: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+}
+
+body {
+	margin: 0;
+	background-image: var(--gradient-space);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main {
+	position: relative;
+	padding-block: 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100dvh;
+	gap: 1rem;
+}
+
+.score {
+	position: absolute;
+	inset-block-start: 1rem;
+	inset-inline-end: 2rem;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	box-shadow: var(--box-shadow);
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+button {
+	cursor: pointer;
+}

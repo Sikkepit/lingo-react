@@ -1,0 +1,44 @@
+.word {
+	display: flex;
+	background: var(--gradient-word);
+
+	&:last-child {
+		.letter {
+			border-bottom-width: 1px;
+		}
+	}
+
+	.letter {
+		border-width: 1px 0 0 1px;
+		border-color: black;
+		border-style: solid;
+		width: 60px;
+		height: 60px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-transform: uppercase;
+		color: white;
+
+		font-size: 30px;
+		font-weight: bold;
+		-webkit-text-stroke: 1px black;
+
+		&:last-child {
+			border-right-width: 1px;
+		}
+	}
+
+	&.word--marked {
+		.letter {
+			&.letter--red {
+				background-color: var(--c-red);
+			}
+
+			&.letter--yellow {
+				background-color: var(--c-yellow);
+			}
+		}
+	}
+}

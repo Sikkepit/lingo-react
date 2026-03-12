@@ -5,6 +5,7 @@ import { useState } from "react";
 import TextInput from "./components/TextInput";
 import Word from "./components/Word";
 import ConfirmButton from "./components/ConfirmButton";
+import Logo from "./components/Logo";
 
 export default function App() {
 	const [winningWord, setWinningWord] = useState(getWinningWord);
@@ -67,33 +68,51 @@ export default function App() {
 
 	return (
 		<div className="main">
-			<span>Score: {score}</span>
+			<Logo />
+			<span className="score">Score: {score}</span>
 
-			<div className="wrapper">
-				{guessedWords.map((word, index) => (
-					<Word
-						key={index}
-						guessedWord={word}
-						isCurrentGuess={guessCount === index}
-						winningWord={winningWord}
-					/>
-				))}
-			</div>
+			{!isGameOver && (
+				<>
+					<div className="wrapper">
+						{guessedWords.map((word, index) => (
+							<Word
+								key={index}
+								guessedWord={word}
+								isCurrentGuess={guessCount === index}
+								winningWord={winningWord}
+							/>
+						))}
+					</div>
 
-			<div className="controls">
-				<TextInput
-					value={currentGuess}
-					disabled={isGameOver}
-					onChange={(value) => setCurrentGuess(value)}
-					onKeyDown={(e) => {
-						if (e.key === "Enter") handleGuess();
-					}}
-				/>
+					<div className="controls">
+						<TextInput
+							value={currentGuess}
+							disabled={isGameOver}
+							onChange={(value) => setCurrentGuess(value)}
+							onKeyDown={(e) => {
+								if (e.key === "Enter") handleGuess();
+							}}
+						/>
 
-				<ConfirmButton onClick={handleGuess} disabled={isGameOver} />
-			</div>
+						<ConfirmButton onClick={handleGuess} disabled={isGameOver} />
+					</div>
+				</>
+			)}
 
-			{isGameOver && <span>Game Over!</span>}
+			{isGameOver && (
+				<>
+					<span>Game Over!</span>
+					<button
+						type="button"
+						onClick={() => {
+							setScore(0);
+							initNewRound();
+						}}
+					>
+						Probeer opnieuw
+					</button>
+				</>
+			)}
 		</div>
 	);
 }

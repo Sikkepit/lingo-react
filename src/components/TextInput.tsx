@@ -8,6 +8,7 @@ type TextInputProps = {
 export default function TextInput({ value, disabled, onChange, onKeyDown }: TextInputProps) {
 	return (
 		<input
+			className="input"
 			type="text"
 			value={value}
 			disabled={disabled}

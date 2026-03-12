@@ -1,0 +1,14 @@
+.input {
+	border-radius: 20px;
+	height: 45px;
+	width: 200px;
+	padding: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	background: rgba(0, 0, 0, 0.2);
+	border: 2xp solid black;
+	border-style: none;
+	color: white;
+	font-weight: bold;
+	box-shadow: var(--box-shadow);
+}
