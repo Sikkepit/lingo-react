@@ -37,7 +37,7 @@ export default function WinModal({ ref }: { ref: RefObject<WinModalRefType | nul
 				<h2 className="modal__header">HOPPA!</h2>
 
 				<span>
-					Je hebt <b>{bringBackLetterIj(winningWord.toUpperCase())}</b> geraden!
+					Je hebt <b>{bringBackLetterIj(winningWord).toUpperCase()}</b> geraden!
 				</span>
 
 				<img src="img/dance.gif" alt="bewegend plaatje van dansend meisje" />
