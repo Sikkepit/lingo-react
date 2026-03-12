@@ -1,8 +1,10 @@
-type ConfirmButtonProps = { onClick: () => void; disabled: boolean };
+import { useLingo } from "../context/LingoContext";
 
-export default function ConfirmButton({ onClick, disabled }: ConfirmButtonProps) {
+export default function ConfirmButton() {
+	const { isGameOver, handleGuess } = useLingo();
+
 	return (
-		<button type="button" className="submit" onClick={onClick} disabled={disabled}>
+		<button type="button" className="submit" onClick={handleGuess} disabled={isGameOver}>
 			OK
 		</button>
 	);

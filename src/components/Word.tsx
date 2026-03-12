@@ -1,12 +1,14 @@
+import { useLingo } from "../context/LingoContext";
 import Letter from "./Letter";
 
 type WordProps = {
 	guessedWord: string;
-	winningWord: string;
 	isCurrentGuess: boolean;
 };
 
-export default function Word({ guessedWord, winningWord, isCurrentGuess }: WordProps) {
+export default function Word({ guessedWord, isCurrentGuess }: WordProps) {
+	const { winningWord } = useLingo();
+
 	return (
 		<div className={`word ${!isCurrentGuess ? "word--marked" : ""}`.trim()}>
 			{Array.from({ length: 5 }).map((_, index) => (

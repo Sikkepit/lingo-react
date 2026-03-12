@@ -1,22 +1,19 @@
-type TextInputProps = {
-	value: string;
-	disabled: boolean;
-	isValid?: boolean;
+import { useLingo } from "../context/LingoContext";
 
-	onChange: (value: string) => void;
-	onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-};
+export default function TextInput() {
+	const { isGameOver, currentGuess, isValid, setCurrentGuess, handleGuess } = useLingo();
 
-export default function TextInput({ value, disabled, isValid = true, onChange, onKeyDown }: TextInputProps) {
 	return (
 		<input
 			className={`input ${!isValid ? "input--error" : ""}`.trim()}
 			type="text"
-			value={value}
-			disabled={disabled}
-			onKeyDown={onKeyDown}
+			value={currentGuess}
+			disabled={isGameOver}
+			onKeyDown={(e) => {
+				if (e.key === "Enter") handleGuess();
+			}}
 			onChange={(e) => {
-				onChange(e.target.value);
+				setCurrentGuess(e.target.value);
 			}}
 		/>
 	);
