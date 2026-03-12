@@ -1,5 +1,6 @@
 import { useImperativeHandle, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
+import { bringBackLetterIj } from "../util/stringUtils";
 
 export type WinModalRefType = {
 	showModal: (winningWord: string) => void;
@@ -36,10 +37,10 @@ export default function WinModal({ ref }: { ref: RefObject<WinModalRefType | nul
 				<h2 className="modal__header">HOPPA!</h2>
 
 				<span>
-					Je hebt <b>{winningWord.toUpperCase()}</b> geraden!
+					Je hebt <b>{bringBackLetterIj(winningWord.toUpperCase())}</b> geraden!
 				</span>
 
-				<img src="/dance.gif" alt="bewegend plaatje van dansend meisje" />
+				<img src="img/dance.gif" alt="bewegend plaatje van dansend meisje" />
 
 				<button
 					type="button"
