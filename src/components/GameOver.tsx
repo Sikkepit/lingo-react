@@ -7,9 +7,11 @@ export default function GameOver() {
 	return (
 		<>
 			<h1 className="stroked-text">Game Over!</h1>
+
 			<span>
 				Het juist antwoord was <b>{bringBackLetterIj(winningWord).toUpperCase()}</b>
 			</span>
+
 			<button
 				type="button"
 				onClick={() => {
