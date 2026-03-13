@@ -20,8 +20,9 @@
 
 	.modal__content {
 		position: relative;
-		background-color: white;
-		padding: 2rem;
+		color: white;
+		background-color: #232327;
+		padding: 2rem 3rem;
 		border-radius: 10px;
 		max-height: 100%;
 		overflow: auto;
@@ -30,7 +31,7 @@
 		flex-direction: column;
 		align-items: center;
 
-		gap: 1rem;
+		gap: 1.5rem;
 
 		.button {
 			margin-top: 1rem;

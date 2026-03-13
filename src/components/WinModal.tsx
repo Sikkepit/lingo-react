@@ -1,6 +1,7 @@
 import { useImperativeHandle, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { bringBackLetterIj } from "../util/stringUtils";
+import Confetti from "./Confetti";
 
 export type WinModalRefType = {
 	showModal: (winningWord: string) => void;
@@ -30,28 +31,30 @@ export default function WinModal({ ref }: { ref: RefObject<WinModalRefType | nul
 	if (!isVisible) return <></>;
 
 	return createPortal(
-		<div className="modal">
-			<button className="modal__backdrop" onClick={() => setShowIsVisible(false)}></button>
+		<>
+			<Confetti />
 
-			<div className="modal__content">
-				<h2 className="modal__header">HOPPA!</h2>
+			<div className="modal">
+				<button className="modal__backdrop" onClick={() => setShowIsVisible(false)}></button>
 
-				<span>
-					Je hebt <b>{bringBackLetterIj(winningWord).toUpperCase()}</b> geraden!
-				</span>
+				<div className="modal__content">
+					<h2 className="modal__header">HOPPA!</h2>
 
-				<img src="img/dance.gif" alt="bewegend plaatje van dansend meisje" />
+					<span>
+						Je hebt <b>{bringBackLetterIj(winningWord).toUpperCase()}</b> geraden!
+					</span>
 
-				<button
-					type="button"
-					onClick={() => setShowIsVisible(false)}
-					className="button"
-					ref={buttonRef}
-				>
-					Volgende woord
-				</button>
+					<button
+						type="button"
+						onClick={() => setShowIsVisible(false)}
+						className="button"
+						ref={buttonRef}
+					>
+						Volgende woord
+					</button>
+				</div>
 			</div>
-		</div>,
+		</>,
 		document.body,
 	);
 }
