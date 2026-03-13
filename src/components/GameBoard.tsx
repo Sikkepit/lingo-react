@@ -1,10 +1,11 @@
 import { useLingo } from "../context/LingoContext";
 import ConfirmButton from "./ConfirmButton";
 import TextInput from "./TextInput";
+import WinModal from "./WinModal";
 import Word from "./Word";
 
 export default function GameBoard() {
-	const { guessedWords, guessCount } = useLingo();
+	const { guessedWords, guessCount, winModalComponent } = useLingo();
 
 	return (
 		<>
@@ -19,6 +20,8 @@ export default function GameBoard() {
 
 				<ConfirmButton />
 			</div>
+
+			<WinModal ref={winModalComponent} />
 		</>
 	);
 }

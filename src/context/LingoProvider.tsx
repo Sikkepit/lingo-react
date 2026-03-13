@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { getWinningWord, getGuessedLetters } from "../util/gameUtils";
 import { convertLetterIj } from "../util/stringUtils";
 import { LingoContext } from "./LingoContext";
-import type { WinModalRefType } from "../components/WinModal";
+import type { winModalComponentType } from "../components/WinModal";
 
 export const LingoProvider = ({ children }: { children: React.ReactNode }) => {
 	const [winningWord, setWinningWord] = useState(getWinningWord);
@@ -16,7 +16,9 @@ export const LingoProvider = ({ children }: { children: React.ReactNode }) => {
 
 	const [isValid, setIsValid] = useState(true);
 
-	const winModalRef = useRef<WinModalRefType>(null);
+	const winModalComponent = useRef<winModalComponentType>(null);
+	const inputElement = useRef<HTMLInputElement>(null);
+
 	const isGameOver = guessCount === 5;
 
 	const initNewRound = () => {
@@ -28,6 +30,8 @@ export const LingoProvider = ({ children }: { children: React.ReactNode }) => {
 		setGuessedeLetters(newGuessedLetters);
 		setGuessedWords(newGuessedWords);
 		setGuessCount(0);
+
+		inputElement.current?.focus();
 	};
 
 	const handleGuess = () => {
@@ -51,7 +55,7 @@ export const LingoProvider = ({ children }: { children: React.ReactNode }) => {
 
 	const handleWin = () => {
 		setScore(score + 100);
-		winModalRef?.current?.showModal(winningWord);
+		winModalComponent?.current?.showModal(winningWord);
 		initNewRound();
 	};
 
@@ -77,7 +81,9 @@ export const LingoProvider = ({ children }: { children: React.ReactNode }) => {
 				guessCount,
 				guessedWords,
 				isGameOver,
-				winModalRef,
+
+				winModalComponent,
+				inputElement,
 
 				score,
 				setScore,

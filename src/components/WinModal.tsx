@@ -2,14 +2,16 @@ import { useImperativeHandle, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { bringBackLetterIj } from "../util/stringUtils";
 import Confetti from "./Confetti";
+import { useLingo } from "../context/LingoContext";
 
-export type WinModalRefType = {
+export type winModalComponentType = {
 	showModal: (winningWord: string) => void;
 };
 
-export default function WinModal({ ref }: { ref: RefObject<WinModalRefType | null> }) {
+export default function WinModal({ ref }: { ref: RefObject<winModalComponentType | null> }) {
 	const [isVisible, setShowIsVisible] = useState(false);
 	const [winningWord, setWinningWord] = useState("");
+	const { inputElement } = useLingo();
 
 	const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -20,6 +22,11 @@ export default function WinModal({ ref }: { ref: RefObject<WinModalRefType | nul
 		setTimeout(() => {
 			buttonRef.current?.focus();
 		}, 0);
+	};
+
+	const hideModal = () => {
+		setShowIsVisible(false);
+		inputElement.current?.focus();
 	};
 
 	useImperativeHandle(ref, () => {
@@ -44,12 +51,7 @@ export default function WinModal({ ref }: { ref: RefObject<WinModalRefType | nul
 						Je hebt <b>{bringBackLetterIj(winningWord).toUpperCase()}</b> geraden!
 					</span>
 
-					<button
-						type="button"
-						onClick={() => setShowIsVisible(false)}
-						className="button"
-						ref={buttonRef}
-					>
+					<button type="button" onClick={hideModal} className="button" ref={buttonRef}>
 						Volgende woord
 					</button>
 				</div>

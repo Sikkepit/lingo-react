@@ -1,7 +1,8 @@
 import { useLingo } from "../context/LingoContext";
 
 export default function TextInput() {
-	const { isGameOver, currentGuess, isValid, setIsValid, setCurrentGuess, handleGuess } = useLingo();
+	const { isGameOver, currentGuess, isValid, setIsValid, setCurrentGuess, handleGuess, inputElement } =
+		useLingo();
 
 	return (
 		<input
@@ -9,6 +10,7 @@ export default function TextInput() {
 			type="text"
 			value={currentGuess}
 			disabled={isGameOver}
+			ref={inputElement}
 			onKeyDown={(e) => {
 				if (e.key === "Enter") handleGuess();
 			}}

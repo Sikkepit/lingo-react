@@ -2,7 +2,7 @@ import { useLingo } from "../context/LingoContext";
 import { bringBackLetterIj } from "../util/stringUtils";
 
 export default function GameOver() {
-	const { setScore, initNewRound, winningWord } = useLingo();
+	const { setScore, initNewRound, winningWord, inputElement } = useLingo();
 
 	return (
 		<>
@@ -17,6 +17,10 @@ export default function GameOver() {
 				onClick={() => {
 					setScore(0);
 					initNewRound();
+
+					setTimeout(() => {
+						inputElement.current?.focus();
+					}, 0);
 				}}
 				className="button"
 				style={{ marginTop: "1rem" }}
